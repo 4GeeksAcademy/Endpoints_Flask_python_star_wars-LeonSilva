@@ -23,12 +23,13 @@ class User(db.Model):
     def __repr__(self):
         return f'{self.name}'
 
-    '''def serialize(self):
+    def serialize(self):
         return{
             "id": self.id,
             "name": self.name,
-
-        }'''
+            "email": self.email,
+            "is_active": self.is_active
+        }
 
 class FavoriteCharacters(db.Model):
     __tablename__ = 'favorite_character'
@@ -40,6 +41,8 @@ class FavoriteCharacters(db.Model):
     character: Mapped['Characters'] = relationship(
         back_populates='favorite_character_by')
 
+    def __repr__(self):
+        return f'{self.character}'
 
 class FavoritePlanets(db.Model):
     __tablename__ = 'favorite_planet'
@@ -50,6 +53,8 @@ class FavoritePlanets(db.Model):
     planet: Mapped['Planets'] = relationship(
         back_populates='favorite_planet_by')
 
+    def __repr__(self):
+        return f'{self.planet}'
 
 class FavoriteStarships(db.Model):
     __tablename__ = 'favorite_starship'
@@ -61,6 +66,8 @@ class FavoriteStarships(db.Model):
     starship: Mapped['Starships'] = relationship(
         back_populates='favorite_starship_by')
 
+    def __repr__(self):
+        return f'{self.starship}'
 
 class Characters(db.Model):
     __tablename__ = 'characters'
@@ -73,6 +80,14 @@ class Characters(db.Model):
 
     def __repr__(self):
         return f'{self.name}'
+    
+    def serialize(self):
+        return {
+            "id":self.id,
+            "name":self.name,
+            "height": self.height,
+            "weight": self.weight,
+        }
 
 class Planets(db.Model):
     __tablename__ = 'planets'
@@ -85,7 +100,14 @@ class Planets(db.Model):
     
     def __repr__(self):
         return f'{self.name}'
-
+    
+    def serialize(self):
+        return {
+            "id":self.id,
+            "name":self.name,
+            "population": self.population,
+            "size": self.size,
+        }
 
 class Starships(db.Model):
     __tablename__ = 'starships'
@@ -98,3 +120,11 @@ class Starships(db.Model):
     
     def __repr__(self):
         return f'{self.name}'
+    
+    def serialize(self):
+        return {
+            "id":self.id,
+            "name":self.name,
+            "speed": self.speed,
+            "size": self.size,
+        }
