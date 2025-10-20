@@ -20,6 +20,15 @@ class User(db.Model):
     favorite_starships_list: Mapped[list['FavoriteStarships']] = relationship(
         back_populates='user')
 
+    def __repr__(self):
+        return f'{self.name}'
+
+    '''def serialize(self):
+        return{
+            "id": self.id,
+            "name": self.name,
+
+        }'''
 
 class FavoriteCharacters(db.Model):
     __tablename__ = 'favorite_character'
@@ -62,6 +71,8 @@ class Characters(db.Model):
     favorite_character_by: Mapped[list['FavoriteCharacters']] = relationship(
         back_populates='character')
 
+    def __repr__(self):
+        return f'{self.name}'
 
 class Planets(db.Model):
     __tablename__ = 'planets'
@@ -71,6 +82,9 @@ class Planets(db.Model):
     size: Mapped[int] = mapped_column(Integer)
     favorite_planet_by: Mapped[list['FavoritePlanets']
                                ] = relationship(back_populates='planet')
+    
+    def __repr__(self):
+        return f'{self.name}'
 
 
 class Starships(db.Model):
@@ -81,3 +95,6 @@ class Starships(db.Model):
     size: Mapped[int] = mapped_column(Integer)
     favorite_starship_by: Mapped[list['FavoriteStarships']] = relationship(
         back_populates='starship')
+    
+    def __repr__(self):
+        return f'{self.name}'

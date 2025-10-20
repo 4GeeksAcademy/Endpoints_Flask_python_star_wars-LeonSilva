@@ -13,7 +13,7 @@ class CharatersModelView(ModelView):
 
 class FavoriteCharactersModelView(ModelView):
     column_auto_selected_realted = True # Esto carga las relaciones
-    column_list = ['id','user_id','character_id']
+    column_list = ['id','user_id','user','character_id','character']
 
 class PlanetsModelView(ModelView):
     column_auto_selected_realted = True # Esto carga las relaciones
@@ -21,7 +21,7 @@ class PlanetsModelView(ModelView):
 
 class FavoritePlanetsModelView(ModelView):
     column_auto_selected_realted = True # Esto carga las relaciones
-    column_list = ['id','user_id','planet_id']
+    column_list = ['id','user_id','user','planet_id','planet']
 
 class StarshipsModelView(ModelView):
     column_auto_selected_realted = True # Esto carga las relaciones
@@ -29,7 +29,7 @@ class StarshipsModelView(ModelView):
 
 class FavoriteStarshipsModelView(ModelView):
     column_auto_selected_realted = True # Esto carga las relaciones
-    column_list = ['id','user_id','starship_id']
+    column_list = ['id','user_id','user','starship_id','starship']
 
 
 def setup_admin(app):
