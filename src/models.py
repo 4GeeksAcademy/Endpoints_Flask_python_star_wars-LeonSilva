@@ -73,8 +73,8 @@ class Characters(db.Model):
     __tablename__ = 'characters'
     id: Mapped[int] = mapped_column(primary_key=True)
     name: Mapped[str] = mapped_column(String(80), nullable=False)
-    height: Mapped[int] = mapped_column(Integer)
-    weight: Mapped[int] = mapped_column(Integer)
+    height: Mapped[int] = mapped_column(Integer, nullable=True)
+    weight: Mapped[int] = mapped_column(Integer, nullable=True)
     favorite_character_by: Mapped[list['FavoriteCharacters']] = relationship(
         back_populates='character')
 
@@ -93,8 +93,8 @@ class Planets(db.Model):
     __tablename__ = 'planets'
     id: Mapped[int] = mapped_column(primary_key=True)
     name: Mapped[str] = mapped_column(String(80), nullable=False)
-    population: Mapped[int] = mapped_column(Integer)
-    size: Mapped[int] = mapped_column(Integer)
+    population: Mapped[int] = mapped_column(Integer, nullable=True)
+    size: Mapped[int] = mapped_column(Integer, nullable=True)
     favorite_planet_by: Mapped[list['FavoritePlanets']
                                ] = relationship(back_populates='planet')
     
@@ -113,8 +113,8 @@ class Starships(db.Model):
     __tablename__ = 'starships'
     id: Mapped[int] = mapped_column(primary_key=True)
     name: Mapped[str] = mapped_column(String(80), nullable=False)
-    speed: Mapped[int] = mapped_column(Integer)
-    size: Mapped[int] = mapped_column(Integer)
+    speed: Mapped[int] = mapped_column(Integer, nullable=True)
+    size: Mapped[int] = mapped_column(Integer, nullable=True)
     favorite_starship_by: Mapped[list['FavoriteStarships']] = relationship(
         back_populates='starship')
     
